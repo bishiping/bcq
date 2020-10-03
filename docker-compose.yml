@@ -34,3 +34,4 @@ services:
     network_mode: "host"
     volumes:
       - ./caddy:/etc/caddy
+      - ./qbittorrent/downloads:/root/bcq/qbittorrent/downloads
