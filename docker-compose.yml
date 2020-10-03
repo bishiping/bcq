@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  bitwarden:
+    image: bitwardenrs/server
+    container_name: bitwarden
+    restart: always
+    ports:
+      - 1234:80
+    volumes:
+      - ./bitwarden/data:/data
+    environment:
+      - SIGNUPS_ALLOWED: 'true'
+      
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    restart: always
+    ports:
+      - 1080:6881/tcp
+      - 1080:6881/udp
+      - 1090:1090
+    volumes:
+      - ./qbittorrent/config:/config
+      - ./qbittorrent/downloads:/downloads
+    environment:
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=1090
+      
+  caddy:
+    image: teddysun/caddy
+    container_name: caddy
+    restart: always
+    network_mode: "host"
+    volumes:
+      - ./caddy:/etc/caddy
