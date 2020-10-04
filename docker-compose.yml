@@ -34,4 +34,18 @@ services:
     network_mode: "host"
     volumes:
       - ./caddy:/etc/caddy
-      - ./qbittorrent/downloads:/root/bcq/qbittorrent/downloads
+      - ./qbittorrent/downloads:/root/docker-apps/qbittorrent/downloads
+
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    restart: always
+    # network_mode: host
+    ports:
+      - 127.0.0.1:32400:32400
+    environment:
+      - VERSION=docker
+    volumes:
+      - ./plex/config:/config
+      - ./plex/tv:/tv
+      - ./qbittorrent/downloads:/movies
