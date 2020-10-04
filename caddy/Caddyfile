@@ -4,5 +4,5 @@
   tls off
   log /etc/caddy/caddy.log
   basicauth / user passwd
-  root /root/bcq/qbittorrent/downloads
+  root /root/docker-apps/qbittorrent/downloads
 }
