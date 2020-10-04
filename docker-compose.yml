@@ -42,7 +42,7 @@ services:
     restart: always
     # network_mode: host
     ports:
-      - 127.0.0.1:32400:32400
+      - 32400:32400
     environment:
       - VERSION=docker
     volumes:
